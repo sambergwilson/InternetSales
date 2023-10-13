@@ -1,0 +1,32 @@
+﻿@model InternetSalesViewModel
+
+<h1>Customer Information</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Business Owner</th>
+        <th>Business Name</th>
+        <th>Business Address</th>
+        <th>Phone Number</th>
+        <th>Internet</th>
+        <th>Landline</th>
+        <th>Mobile</th>
+        <th>Tv Service</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.CustomerList.OrderBy(x => x.BusinessName))
+        {
+            <tr>
+                <td>@item.BusinessOwner</td>
+                <td>@item.BusinessName</td>
+                <td>@item.BusinessAddress</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.PurchasedInternet</td>
+                <td>@item.PurchasedPhone</td>
+                <td>@item.PurchasedCellService</td>
+                <td>@item.TvService</td>
+            </tr>
+        }
+    </tbody>
+</table>
