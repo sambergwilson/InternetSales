@@ -1,0 +1,54 @@
+﻿@model InternetSalesViewModel
+
+<form method="post">
+    <div class=border p-3 mt-4">
+        <div class="row pb-2">
+            <h2>Create Customer Information</h2>
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="form-row">
+            <div class="col-md-5 form-group">
+                <label>Business Owner</label>
+                <input type="text" asp-for="BusinessOwner" class="form-control"/>
+                <span asp-validation-for="BusinessOwner" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-5 form-group">
+                <label>Business Name</label>
+                <input type="text" asp-for="BusinessName" class="form-control"/>
+                <span asp-validation-for="BusinessName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-5 form-group">
+                <label>Business Address</label>
+                <input type="text" asp-for="BusinessAddress" class="form-control" />
+                <span asp-validation-for="BusinessAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-5 form-group">
+                <label>Business Telephone</label>
+                <input type="text" asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="btn-group pt-3" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="btn-check" asp-for="PurchasedInternet" checked="" autocomplete="off">
+            <label class="btn btn-primary" asp-for="PurchasedInternet">Internet</label>
+            <span asp-validation-for="PurchasedInternet" class="text-danger"></span>
+            <input type="checkbox" class="btn-check" asp-for="PurchasedPhone" autocomplete="off">
+            <label class="btn btn-primary" asp-for="PurchasedPhone">Landline</label>
+            <span asp-validation-for="PurchasedPhone" class="text-danger"></span>
+            <input type="checkbox" class="btn-check" asp-for="PurchasedCellService" autocomplete="off">
+            <label class="btn btn-primary" asp-for="PurchasedCellService">Mobile</label>
+            <span asp-validation-for="PurchasedCellService" class="text-danger"></span>
+            <input type="checkbox" class="btn-check" asp-for="TvService" autocomplete="off">
+            <label class="btn btn-primary" asp-for="TvService">Tv Service</label>
+            <span asp-validation-for="TvService" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:150px">Submit Form</button>
+        <a asp-controller="InternetSales" asp-action="Index" action="btn btn-secondary" class="btn btn-secondary" style="width:200px">Back to Dashboard</a>
+    </div>
+</form>

@@ -17,11 +17,6 @@ namespace InternetSales.DataAccess.Repository
             _dbContext = new InternetSalesContext();
         }
 
-        /*public InternetSalesRepository(InternetSalesContext dbContext)
-        {
-            _dbContext = dbContext;
-        }*/
-
         public int Create(InternetSalesModel model)
         {
             _dbContext.Add(model);
@@ -30,11 +25,37 @@ namespace InternetSales.DataAccess.Repository
             return model.CustomerId;
         }
 
+        public int Update(InternetSalesModel model)
+        {
+            var existingCustomer = _dbContext.InternetSales.Find(model.CustomerId);
+
+            existingCustomer.BusinessOwner = model.BusinessOwner;
+            existingCustomer.BusinessName = model.BusinessName;
+            existingCustomer.BusinessAddress = model.BusinessAddress;
+            existingCustomer.PhoneNumber = model.PhoneNumber;
+            existingCustomer.PurchasedInternet = model.PurchasedInternet;
+            existingCustomer.PurchasedInternet = model.PurchasedInternet;
+            existingCustomer.PurchasedPhone = model.PurchasedPhone;
+            existingCustomer.PurchasedCellService = model.PurchasedCellService;
+            existingCustomer.TvService = model.TvService;
+
+            _dbContext.SaveChanges();
+
+            return existingCustomer.CustomerId;
+        }
+
         public List<InternetSalesModel> GetAll()
         {
             List<InternetSalesModel> salesList = _dbContext.InternetSales.ToList();
 
             return salesList;
+        }
+
+        public InternetSalesModel GetCurrent(int customerId)
+        {
+            var model = _dbContext.InternetSales.Find(customerId);
+
+            return model;
         }
     }
 }

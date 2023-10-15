@@ -6,7 +6,7 @@
             <h1>Customer Information</h1>
         </div>
         <div class="col-6 text-end">
-            <a asp-controller="" asp-action="" class="btn btn-primary">
+            <a asp-controller="InternetSales" asp-action="Create" class="btn btn-primary">
                 <i class="bi bi-plus-circle"></i>
                 Create New Customer
             </a>
@@ -37,6 +37,17 @@
                 <td>@item.PurchasedPhone</td>
                 <td>@item.PurchasedCellService</td>
                 <td>@item.TvService</td>
+                <td>
+                    <div class="w-50 btn-group" role="group">
+                        <a asp-controller="InternetSales" asp-action="Edit" asp-route-Id="@item.CustomerId" class="btn btn-primary mx-1">
+                                <i class="bi bi-pencil-square"></i>Edit
+                        </a>
+                            <div class="w-50 btn-group" role="group">
+                                <a asp-controller="InternetSales" asp-action="Delete" class="btn btn-outline-secondary mx-1">
+                                    <i class="bi bi-trash3"></i>Delete
+                                </a>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
