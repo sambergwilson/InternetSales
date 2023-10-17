@@ -28,6 +28,31 @@ namespace InternetSales.DataAccess.Model
         [Required]
         public bool TvService { get; set; }
 
+        public InternetSalesModel(string businessOwner, string businessName, string businessAddress, string phoneNumber, bool purchasedInternet, bool purchasedPhone, bool purchasedCellService, bool tvService)
+        {
+            BusinessOwner = businessOwner;
+            BusinessName = businessName;
+            BusinessAddress = businessAddress;
+            PhoneNumber = phoneNumber;
+            PurchasedInternet = purchasedInternet;
+            PurchasedPhone = purchasedPhone;
+            PurchasedCellService = purchasedCellService;
+            TvService = tvService;
+        }
+
+        public InternetSalesModel(int customerId, string businessOwner, string businessName, string businessAddress, string phoneNumber, bool purchasedInternet, bool purchasedPhone, bool purchasedCellService, bool tvService)
+        {
+            CustomerId = customerId;
+            BusinessOwner = businessOwner;
+            BusinessName = businessName;
+            BusinessAddress = businessAddress;
+            PhoneNumber = phoneNumber;
+            PurchasedInternet = purchasedInternet;
+            PurchasedPhone = purchasedPhone;
+            PurchasedCellService = purchasedCellService;
+            TvService = tvService;
+        }
+
         public InternetSalesModel()
         {
             

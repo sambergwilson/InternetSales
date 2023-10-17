@@ -1,7 +1,8 @@
 ﻿@model InternetSalesViewModel
+@using InternetSales.DataAccess.Model
 
-<form method="post">
-    <input asp-for="CurrentCustomer.CustomerId" hidden />
+<form action="~/InternetSales/Edit" method="post">
+    <input type="hidden" name="CustomerId" value="@Model.CurrentCustomer.CustomerId"/>
     <div class=border p-3 mt-4">
         <div class="row pb-2">
             <h2>Edit Customer Information</h2>
@@ -10,42 +11,45 @@
         <div class="form-row">
             <div class="col-md-5 form-group">
                 <label>Business Owner</label>
-                <input type="text" asp-for="BusinessOwner" class="form-control" />
+                <input type="text" asp-for="BusinessOwner" class="form-control" value="@Model.CurrentCustomer.BusinessOwner"/>
                 <span asp-validation-for="BusinessOwner" class="text-danger"></span>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-5 form-group">
                 <label>Business Name</label>
-                <input type="text" asp-for="BusinessName" class="form-control" />
+                <input type="text" asp-for="BusinessName" class="form-control" value="@Model.CurrentCustomer.BusinessName"/>
                 <span asp-validation-for="BusinessName" class="text-danger"></span>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-5 form-group">
                 <label>Business Address</label>
-                <input type="text" asp-for="BusinessAddress" class="form-control" />
+                <input type="text" asp-for="BusinessAddress" class="form-control" value="@Model.CurrentCustomer.BusinessAddress"/>
                 <span asp-validation-for="BusinessAddress" class="text-danger"></span>
             </div>
         </div>
         <div class="form-row">
             <div class="col-md-5 form-group">
                 <label>Business Telephone</label>
-                <input type="text" asp-for="PhoneNumber" class="form-control" />
+                <input type="text" asp-for="PhoneNumber" class="form-control" value="@Model.CurrentCustomer.PhoneNumber"/>
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
         </div>
         <div class="btn-group pt-3" role="group" aria-label="Basic checkbox toggle button group">
-            <input type="checkbox" class="btn-check" asp-for="PurchasedInternet" checked="" autocomplete="off">
+            <input class="btn-check" asp-for="PurchasedInternet">
             <label class="btn btn-primary" asp-for="PurchasedInternet">Internet</label>
             <span asp-validation-for="PurchasedInternet" class="text-danger"></span>
-            <input type="checkbox" class="btn-check" asp-for="PurchasedPhone" autocomplete="off">
+
+            <input class="btn-check" asp-for="PurchasedPhone">
             <label class="btn btn-primary" asp-for="PurchasedPhone">Landline</label>
             <span asp-validation-for="PurchasedPhone" class="text-danger"></span>
-            <input type="checkbox" class="btn-check" asp-for="PurchasedCellService" autocomplete="off">
+
+            <input class="btn-check" asp-for="PurchasedCellService">
             <label class="btn btn-primary" asp-for="PurchasedCellService">Mobile</label>
             <span asp-validation-for="PurchasedCellService" class="text-danger"></span>
-            <input type="checkbox" class="btn-check" asp-for="TvService" autocomplete="off">
+
+            <input class="btn-check" asp-for="TvService">
             <label class="btn btn-primary" asp-for="TvService">Tv Service</label>
             <span asp-validation-for="TvService" class="text-danger"></span>
         </div>

@@ -8,7 +8,10 @@ namespace InternetSales.Models
     {
         public List<InternetSalesModel>? CustomerList { get; set; }
         public InternetSalesModel? CurrentCustomer { get; set; }
+        public bool IsActionSuccess { get; set; }
+        public string ActionMessage { get; set; }
 
+        public int CustomerId { get; set; }
         public string? BusinessOwner { get; set; }
         [Required]
         public string BusinessName { get; set; }

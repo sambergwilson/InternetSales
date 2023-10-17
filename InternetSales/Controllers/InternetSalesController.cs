@@ -2,8 +2,9 @@
 using InternetSales.DataAccess.Model;
 using InternetSales.DataAccess.Repository;
 using InternetSales.Models;
-using Microsoft.AspNetCore.DataProtection.KeyManagement.Internal;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Text;
 
 namespace InternetSales.Controllers
 {
@@ -15,13 +16,14 @@ namespace InternetSales.Controllers
         {
             _repo = new InternetSalesRepository();
         }
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
             var model = new InternetSalesViewModel();
             model.CustomerList = GetAll();
+            model.CurrentCustomer = model.CustomerList.FirstOrDefault();
 
             return View(model);
-        }
+        }*/
 
         public IActionResult Create()
         {
@@ -52,10 +54,9 @@ namespace InternetSales.Controllers
                 return NotFound();
             }
             var model = new InternetSalesViewModel();
-
             model.CurrentCustomer = GetCurrent(id);
-            
-            return View("Edit");
+
+            return View(model);
         }
 
         [HttpPost]
@@ -63,16 +64,57 @@ namespace InternetSales.Controllers
         {
             if (ModelState.IsValid)
             {
-                _repo.Update(model);
-                var updated = new InternetSalesViewModel();
+                var incomingInfo = new InternetSalesModel(model.CustomerId, model.BusinessOwner, model.BusinessName,
+                    model.BusinessAddress, model.PhoneNumber, model.PurchasedInternet, model.PurchasedPhone, model.PurchasedCellService, model.TvService);
 
-                updated.CustomerList = GetAll();
+                _repo.Update(incomingInfo);
 
-                return View("Index", updated);
+                return RedirectToAction("Index", incomingInfo);
             }
 
+            return View();
+        }
 
-            return View("Edit");
+        public IActionResult Delete(int id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            _repo.Delete(GetCurrent(id));
+
+            var model = new InternetSalesViewModel();
+            model.CustomerList = GetAll();
+
+            model.IsActionSuccess = true;
+            model.ActionMessage = "Customer Information has been deleted successfully";
+
+            return View("Index", model);
+
+        }
+
+        public IActionResult Index(string searchTerm)
+        {
+            var model = new InternetSalesViewModel();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                model.CustomerList = SearchCustomers(searchTerm);
+            }
+            else
+            {
+                model.CustomerList = GetAll();
+            }
+
+            model.CurrentCustomer = model.CustomerList.FirstOrDefault();
+
+            return View(model);
+        }
+
+        private List<InternetSalesModel> SearchCustomers(string searchTerm)
+        {
+            return _repo.GetAll().Where(c => c.BusinessName.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
         private List<InternetSalesModel> GetAll()

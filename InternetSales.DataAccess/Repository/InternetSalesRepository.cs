@@ -44,6 +44,15 @@ namespace InternetSales.DataAccess.Repository
             return existingCustomer.CustomerId;
         }
 
+        public bool Delete(InternetSalesModel model)
+        {
+            model = _dbContext.InternetSales.Find(model.CustomerId);
+            _dbContext.Remove(model);
+            _dbContext.SaveChanges();
+
+            return true;
+        }
+
         public List<InternetSalesModel> GetAll()
         {
             List<InternetSalesModel> salesList = _dbContext.InternetSales.ToList();
