@@ -32,12 +32,12 @@
         <div class="form-row">
             <div class="col-md-5 form-group">
                 <label>Business Telephone</label>
-                <input type="text" asp-for="PhoneNumber" class="form-control" value="@Model.CurrentCustomer.PhoneNumber"/>
+                <input type="text" asp-for="PhoneNumber" class="form-control mb-3" value="@Model.CurrentCustomer.PhoneNumber"/>
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
         </div>
-        <div class="btn-group pt-3" role="group" aria-label="Basic checkbox toggle button group">
-            <input class="btn-check" asp-for="PurchasedInternet">
+        <div class="btn-group px-3" role="group" aria-label="Basic checkbox toggle button group">
+            <input class="btn-check" asp-for="PurchasedInternet" value="@Model.CurrentCustomer.PurchasedInternet">
             <label class="btn btn-primary" asp-for="PurchasedInternet">Internet</label>
             <span asp-validation-for="PurchasedInternet" class="text-danger"></span>
 
@@ -53,7 +53,7 @@
             <label class="btn btn-primary" asp-for="TvService">Tv Service</label>
             <span asp-validation-for="TvService" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Update Form</button>
-        <a asp-controller="InternetSales" asp-action="Index" action="btn btn-secondary" class="btn btn-secondary" style="width:200px">Back to Dashboard</a>
+        <button type="submit" class="btn btn-primary mt-3 ms-3" style="width:150px">Update Form</button>
+        <a asp-controller="InternetSales" asp-action="Index" action="btn btn-secondary" class="btn btn-secondary mt-3 ms-3" style="width:200px">Back to Dashboard</a>
     </div>
 </form>

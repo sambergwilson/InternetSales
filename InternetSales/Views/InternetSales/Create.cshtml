@@ -8,7 +8,7 @@
         <div asp-validation-summary="ModelOnly"></div>
         <div class="form-row">
             <div class="col-md-5 form-group">
-                <label class="text-primary">Business Owner</label>
+                <label class="">Business Owner</label>
                 <input type="text" asp-for="BusinessOwner" class="form-control"/>
                 <span asp-validation-for="BusinessOwner" class="text-danger"></span>
             </div>
@@ -47,11 +47,11 @@
             <label class="btn btn-primary" asp-for="PurchasedCellService">Mobile</label>
             <span asp-validation-for="PurchasedCellService" class="text-danger"></span>
 
-            <input class="btn-check" asp-for="TvService">
+            <input class="btn-check me-auto" asp-for="TvService">
             <label class="btn btn-primary" asp-for="TvService">Tv Service</label>
-            <span asp-validation-for="TvService" class="text-danger"></span>
+            <span asp-validation-for="TvService" class="text-danger pb-5"></span>
         </div>
-        <button type="submit" class="btn btn-primary" style="width:150px">Submit Form</button>
+        <button type="submit" class="btn btn-primary pt-3">Submit Form</button>
         <a asp-controller="InternetSales" asp-action="Index" action="btn btn-secondary" class="btn btn-secondary" style="width:200px">Back to Dashboard</a>
     </div>
 </form>
